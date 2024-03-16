@@ -61,6 +61,7 @@ class LinkedList:  # класс списка
             pointer.next = None  # обнуляем указатели, чтобы
             self.last = pointer  # предпоследний стал последним
             return node  # возвращаем сохраненный
+
 LL = LinkedList()
 LL.pushright(1)
 LL.pushleft(2)
@@ -69,23 +70,23 @@ LL.popright()
 LL.pushleft(4)
 LL.pushright(5)
 LL.popleft()
-
 print(LL)
-def __iter__(self): # объявляем класс как итератор
-    self.current = self.first # в текущий элемент помещаем первый
-    return self # возвращаем итератор
-def __next__(self): # метод перехода
-    if self.current is None: # если текущий стал последним
-        raise StopIteration # вызываем исключение
-    else:
-        node = self.current # сохраняем текущий элемент
-        self.current = self.current.next # совершаем переход
-        return node # и возвращаем сохраненный
-def __len__(self):
-    count = 0
-    pointer = self.first
-    while pointer is not None:
-        count += 1
-        pointer = pointer.next
-    return count
-print(LL.__len__())
+    def __iter__(self): # объявляем класс как итератор
+        self.current = self.first # в текущий элемент помещаем первый
+        return self # возвращаем итератор
+    def __next__(self): # метод перехода
+        if self.current is None: # если текущий стал последним
+            raise StopIteration # вызываем исключение
+        else:
+            node = self.current # сохраняем текущий элемент
+            self.current = self.current.next # совершаем переход
+            return node # и возвращаем сохраненный
+
+    def __len__(self):
+        count = 0
+        pointer = self.first
+        while pointer is not None:
+            count += 1
+            pointer = pointer.next
+        return count
+        print(LL.__len__())

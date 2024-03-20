@@ -8,7 +8,7 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start', 'help'])
 def help_message(message: telebot.types.Message):
-    text = ('Чтобы начать работу, введите боту команду в следующем формате: \n <имя валюты> \
+    text = ('Доброго времени суток! Я Уральский валютный бот, могу конвертировать валюты. Чтобы начать работу, введите боту команду в следующем формате: \n <имя валюты> \
 <в какую валюту перевести> \
 <количество переводимой валюты>  \n Увидеть список всех доступных валют: /values')
     bot.reply_to(message, text)
@@ -28,7 +28,7 @@ def convert(message: telebot.types.Message):
         values = message.text.split(' ')
 
         if len(values) != 3:
-            raise APIException('Слишком много параметров')
+            raise APIException('Введите команду или 3 параметра: имя валюты, в какую валюту перевести, количество')
 
         quote, base, amount = values
         total_base = CurrencyConvertor.get_price(quote, base, amount)

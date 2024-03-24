@@ -1,0 +1,1 @@
+print('PY' in "Python")
